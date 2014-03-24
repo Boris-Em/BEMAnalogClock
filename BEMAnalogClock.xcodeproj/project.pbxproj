@@ -21,6 +21,12 @@
 		C34360BA18BAEB900056E6CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C343609C18BAEB8F0056E6CE /* UIKit.framework */; };
 		C34360C218BAEB900056E6CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C34360C018BAEB900056E6CE /* InfoPlist.strings */; };
 		C34360C418BAEB900056E6CE /* BEMAnalogClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C34360C318BAEB900056E6CE /* BEMAnalogClockTests.m */; };
+		C34360D018BAEC0D0056E6CE /* BEMAnalogClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = C34360CF18BAEC0D0056E6CE /* BEMAnalogClockView.m */; };
+		C34360D618BC56070056E6CE /* BEMMinuteHand.m in Sources */ = {isa = PBXBuildFile; fileRef = C34360D518BC56070056E6CE /* BEMMinuteHand.m */; };
+		C34360D918BC72340056E6CE /* BEMHourHand.m in Sources */ = {isa = PBXBuildFile; fileRef = C34360D818BC72340056E6CE /* BEMHourHand.m */; };
+		C3A7BA0218DFDE3000A2BB9B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C3A7BA0118DFDE3000A2BB9B /* LICENSE */; };
+		C3C4BBC018CD0323009B9AA0 /* BEMHandsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C4BBBF18CD0323009B9AA0 /* BEMHandsAnimation.m */; };
+		C3C4BBC318CD6881009B9AA0 /* BEMSecondHand.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C4BBC218CD6881009B9AA0 /* BEMSecondHand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,17 @@
 		C34360BF18BAEB900056E6CE /* BEMAnalogClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BEMAnalogClockTests-Info.plist"; sourceTree = "<group>"; };
 		C34360C118BAEB900056E6CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C34360C318BAEB900056E6CE /* BEMAnalogClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BEMAnalogClockTests.m; sourceTree = "<group>"; };
+		C34360CE18BAEC0D0056E6CE /* BEMAnalogClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMAnalogClockView.h; path = Classes/BEMAnalogClockView.h; sourceTree = "<group>"; };
+		C34360CF18BAEC0D0056E6CE /* BEMAnalogClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMAnalogClockView.m; path = Classes/BEMAnalogClockView.m; sourceTree = "<group>"; };
+		C34360D418BC56070056E6CE /* BEMMinuteHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMMinuteHand.h; path = Classes/BEMMinuteHand.h; sourceTree = "<group>"; };
+		C34360D518BC56070056E6CE /* BEMMinuteHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMMinuteHand.m; path = Classes/BEMMinuteHand.m; sourceTree = "<group>"; };
+		C34360D718BC72340056E6CE /* BEMHourHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMHourHand.h; path = Classes/BEMHourHand.h; sourceTree = "<group>"; };
+		C34360D818BC72340056E6CE /* BEMHourHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMHourHand.m; path = Classes/BEMHourHand.m; sourceTree = "<group>"; };
+		C3A7BA0118DFDE3000A2BB9B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C3C4BBBE18CD0323009B9AA0 /* BEMHandsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMHandsAnimation.h; path = Classes/BEMHandsAnimation.h; sourceTree = "<group>"; };
+		C3C4BBBF18CD0323009B9AA0 /* BEMHandsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMHandsAnimation.m; path = Classes/BEMHandsAnimation.m; sourceTree = "<group>"; };
+		C3C4BBC118CD6881009B9AA0 /* BEMSecondHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMSecondHand.h; path = Classes/BEMSecondHand.h; sourceTree = "<group>"; };
+		C3C4BBC218CD6881009B9AA0 /* BEMSecondHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMSecondHand.m; path = Classes/BEMSecondHand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +99,8 @@
 		C343608C18BAEB8F0056E6CE = {
 			isa = PBXGroup;
 			children = (
+				C3A7BA0118DFDE3000A2BB9B /* LICENSE */,
+				C34360CD18BAEBC80056E6CE /* Classes */,
 				C343609E18BAEB8F0056E6CE /* BEMAnalogClock */,
 				C34360BD18BAEB900056E6CE /* BEMAnalogClockTests */,
 				C343609718BAEB8F0056E6CE /* Frameworks */,
@@ -152,6 +171,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C34360CD18BAEBC80056E6CE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C34360CE18BAEC0D0056E6CE /* BEMAnalogClockView.h */,
+				C34360CF18BAEC0D0056E6CE /* BEMAnalogClockView.m */,
+				C3C4BBBE18CD0323009B9AA0 /* BEMHandsAnimation.h */,
+				C3C4BBBF18CD0323009B9AA0 /* BEMHandsAnimation.m */,
+				C34360D718BC72340056E6CE /* BEMHourHand.h */,
+				C34360D818BC72340056E6CE /* BEMHourHand.m */,
+				C34360D418BC56070056E6CE /* BEMMinuteHand.h */,
+				C34360D518BC56070056E6CE /* BEMMinuteHand.m */,
+				C3C4BBC118CD6881009B9AA0 /* BEMSecondHand.h */,
+				C3C4BBC218CD6881009B9AA0 /* BEMSecondHand.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -199,6 +235,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Boris Emorine";
 				TargetAttributes = {
+					C343609418BAEB8F0056E6CE = {
+						DevelopmentTeam = 67V847367C;
+					};
 					C34360B518BAEB900056E6CE = {
 						TestTargetID = C343609418BAEB8F0056E6CE;
 					};
@@ -230,6 +269,7 @@
 			files = (
 				C34360B118BAEB900056E6CE /* Images.xcassets in Resources */,
 				C34360A318BAEB8F0056E6CE /* InfoPlist.strings in Resources */,
+				C3A7BA0218DFDE3000A2BB9B /* LICENSE in Resources */,
 				C34360AC18BAEB900056E6CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,8 +290,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C34360AF18BAEB900056E6CE /* ViewController.m in Sources */,
+				C3C4BBC018CD0323009B9AA0 /* BEMHandsAnimation.m in Sources */,
 				C34360A918BAEB900056E6CE /* AppDelegate.m in Sources */,
 				C34360A518BAEB900056E6CE /* main.m in Sources */,
+				C34360D918BC72340056E6CE /* BEMHourHand.m in Sources */,
+				C3C4BBC318CD6881009B9AA0 /* BEMSecondHand.m in Sources */,
+				C34360D018BAEC0D0056E6CE /* BEMAnalogClockView.m in Sources */,
+				C34360D618BC56070056E6CE /* BEMMinuteHand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,10 +423,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BEMAnalogClock/BEMAnalogClock-Prefix.pch";
 				INFOPLIST_FILE = "BEMAnalogClock/BEMAnalogClock-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -391,10 +439,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BEMAnalogClock/BEMAnalogClock-Prefix.pch";
 				INFOPLIST_FILE = "BEMAnalogClock/BEMAnalogClock-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -460,6 +511,7 @@
 				C34360C918BAEB900056E6CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C34360CA18BAEB900056E6CE /* Build configuration list for PBXNativeTarget "BEMAnalogClockTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +520,7 @@
 				C34360CC18BAEB900056E6CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

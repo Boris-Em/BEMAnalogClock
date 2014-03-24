@@ -1,8 +1,8 @@
 //
 //  main.m
-//  BEMAnalogClock
+//  BEMAnalogClockView
 //
-//  Created by Bobo on 2/23/14.
+//  Created by Boris Emorine on 2/23/14.
 //  Copyright (c) 2014 Boris Emorine. All rights reserved.
 //
 
