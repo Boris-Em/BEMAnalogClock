@@ -72,9 +72,9 @@ The easiest way is to change the values of the NSInteger properties `hours`, `mi
     self.myClock.seconds = 10;
 
 **By conforming to these two methods**  
-The other way to set up the time on the clock is by using the methods ` timeForClock` and ` dateFormatterForClock`.
-`timeForClock` should return a string containing the time you want the clock to be set up at.
-` dateFormatterForClock` should return the date format (string) used by the string for the time.
+The other way to set up the time on the clock is by using the methods ` timeForClock:` and ` dateFormatterForClock:`.
+`timeForClock:` should return a string containing the time you want the clock to be set up at.
+`dateFormatterForClock:` should return the date format (string) used by the string for the time.
 Here is an example on how these methods are used on a ViewController:
 
     - (NSString *)timeForClock:(BEMAnalogClockView *)clock {
@@ -120,7 +120,7 @@ Or you can call the method `setClockToCurrentTimeAnimatedAnimated:`. The paramet
 
     - (void)anyMethodInYourOwnController {
         [self.myClock setClockToCurrentTimeAnimatedAnimated:YES]; // Set the time on the clock to the one on the user's device
-        }
+    }
 
 Or you can call the method `setClockToCurrentTimeAnimated:`. The parameter `animated` is similar to the one of `updateTimeAnimated`. It controls if the hands of the clock should move with an animation to the new position or not.
 
@@ -143,7 +143,7 @@ Or you can use the methods `startRealTime` and `stopRealTime` to start/stop the 
 The property `realTimeIsActivated` (read only) reports if the clock is currently using the real time feature or not.
 
 ### Current time displayed on the clock
-The method `currentTimeOnClock` is here to get the time currently displayed on the clock. It gets called every time the clock is updated. The parameters `hours`, `minutes` and `seconds` are strings of the hours, minutes and seconds currently displayed on the clock.  
+The method `currentTimeOnClock:` is here to get the time currently displayed on the clock. It gets called every time the clock is updated. The parameters `hours`, `minutes` and `seconds` are strings of the hours, minutes and seconds currently displayed on the clock.  
 Here is an example on how to use the method:
 
     - (void)currentTimeOnClock:(BEMAnalogClockView *)clock Hours:(NSString *)hours Minutes:(NSString *)minutes 
@@ -151,6 +151,11 @@ Here is an example on how to use the method:
         NSLog(@"Minutes: %@", minutes); // The minutes currently displayed on the clock by the minute hand.
         NSLog(@"Seconds: %@", seconds); // The seconds currently displayed on the clock by the second hand.
     }
+    
+### Adjusting the time on the clock via touch
+
+The BOOL property `setTimeViaTouch`, when set to YES, provides a way to adjust the time on the clock via touch input. The minute hand will follow the user's finger around the clock. The default value of this property is NO.
+
 
 ### Customization
 
@@ -176,14 +181,14 @@ Here are the properties used to customize the clock's face:
 `borderWidth` defines the width of the border.
 
 #### Customization of the graduations
-Five methods make it easy to customize the graduations of the clock. They all control a parameter (color, alpha, width, length, offset) at a specific graduation. Each graduation is defined by an index going from 0 to 59.   
-  1. `graduationColorForIndex` controls the color of the graduations.
-  2. `graduationAlphaForIndex` controls the alpha of the graduations.
-  3. `graduationWidthForIndex` controls the width of the graduations.
-  4. `graduationLengthForIndex` controls the Length of the graduations.
-  5. `graduationOffsetForIndex` controls the distance from the border of the graduations.  
+Five methods make it easy to customize the graduations of the clock. They all control a parameter (color, alpha, width, length, offset) at a specific graduation. Each graduation is defined by an index going from 0 to 59.  
+  1. `graduationColorForIndex:` controls the color of the graduations.
+  2. `graduationAlphaForIndex:` controls the alpha of the graduations.
+  3. `graduationWidthForIndex:` controls the width of the graduations.
+  4. `graduationLengthForIndex:` controls the Length of the graduations.
+  5. `graduationOffsetForIndex:` controls the distance from the border of the graduations.  
   
-Here is an example on how to use the `graduationLengthForIndex` method:
+Here is an example on how to use the `graduationLengthForIndex:` method:
 
     - (CGFloat)analogClock:(BEMAnalogClockView *)clock graduationLengthForIndex:(NSInteger)index {
         if (index == 30) { 
@@ -200,4 +205,10 @@ Here is an example on how to use the `graduationLengthForIndex` method:
 <p align="center">
 
 And here is the result of the above example. The 30th graduation of the clock is longer than the other ones. One graduation in every five graduation is also longer than the rest.</p>
+  
+You can use the BOOL property `enableGraduations` to activate or deactivate the graduations on the clock. If it is set to YES the graduations will be visible, if set to NO, they won't (default value is NO).
+
+### Status reporting
+
+When the clock starts or completes loading it will call a delegate method. When it begins reloading the `clockDidBeginLoading:` method is called. When loading is finished, the `clockDidFinishLoading:` method is called (please note that as of now, the animation is not complete when this delegate method is called).
 
