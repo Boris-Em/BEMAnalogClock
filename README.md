@@ -83,7 +83,6 @@ Here is an example on how these methods are used on a ViewController:
 
     - (NSString *)dateFormatterForClock:(BEMAnalogClockView *)clock {
         return @"MM, dd yyyy HH:mm:ss"; // The date format used by the string in “timeForClock”.
-
     }
 
 
@@ -121,12 +120,12 @@ Or you can call the method `setClockToCurrentTimeAnimatedAnimated:`. The paramet
 
     - (void)anyMethodInYourOwnController {
         [self.myClock setClockToCurrentTimeAnimatedAnimated:YES]; // Set the time on the clock to the one on the user's device
+        }
 
 Or you can call the method `setClockToCurrentTimeAnimated:`. The parameter `animated` is similar to the one of `updateTimeAnimated`. It controls if the hands of the clock should move with an animation to the new position or not.
 
     - (void)anyMethodInYourOwnController {
         [self.myClock setClockToCurrentTimeAnimated:YES]; // Set the time on the clock to the one on the user's device
-
     }
 
 
@@ -151,7 +150,7 @@ Here is an example on how to use the method:
         NSLog(@"Hours: %@", hours); // The hours currently displayed on the clock by the hour hand.
         NSLog(@"Minutes: %@", minutes); // The minutes currently displayed on the clock by the minute hand.
         NSLog(@"Seconds: %@", seconds); // The seconds currently displayed on the clock by the second hand.
-        }
+    }
 
 ### Customization
 
@@ -190,9 +189,7 @@ Here is an example on how to use the `graduationLengthForIndex` method:
         if (index == 30) { 
         return 50; // The length of 30th graduation will be 50.
         } else if (!(index % 5) == 1){
-
         return 20; // The length of one graduation in every five graduation will be 20.
-
         } else {
         return 5; // The length of the rest of the graduations will be 5.
         }
