@@ -144,7 +144,7 @@ Or you can use the methods `startRealTime` and `stopRealTime` to start/stop the 
 The property `realTimeIsActivated` (read only) reports if the clock is currently using the real time feature or not.
 
 ### Current time displayed on the clock
-The method `currentTimeOnClock` is here to get the time currently displayed on the clock. It gets called everytime the clock is updated. The parameters `hours`, `minutes` and `seconds` are strings of the hours, minutes and seconds currently displayed on the clock.  
+The method `currentTimeOnClock` is here to get the time currently displayed on the clock. It gets called every time the clock is updated. The parameters `hours`, `minutes` and `seconds` are strings of the hours, minutes and seconds currently displayed on the clock.  
 Here is an example on how to use the method:
 
     - (void)currentTimeOnClock:(BEMAnalogClockView *)clock Hours:(NSString *)hours Minutes:(NSString *)minutes 
@@ -158,9 +158,6 @@ Here is an example on how to use the method:
 Thankfully, BEMAnalogClock is highly customizable.
 
 <p align="center"><img src="http://s10.postimg.org/82mkeach5/Legende.png"/></p>
-
-Thankfully, BEMAnalogClock is highly customizable.
-
 
 #### Customization of the hands
 Different properties are here to customize the hands of a clock created with BEMAnalogClock.  
@@ -196,8 +193,6 @@ Here is an example on how to use the `graduationLengthForIndex` method:
 
         return 20; // The length of one graduation in every five graduation will be 20.
 
-        return 20; // The length of one graduation every five will be 20.
-
         } else {
         return 5; // The length of the rest of the graduations will be 5.
         }
@@ -208,6 +203,4 @@ Here is an example on how to use the `graduationLengthForIndex` method:
 <p align="center">
 
 And here is the result of the above example. The 30th graduation of the clock is longer than the other ones. One graduation in every five graduation is also longer than the rest.</p>
-
-And here is the result of the above example. The 30th graduation of the clock is longer than the other ones. ne graduation every five is also longer than the rest.</p>
 
