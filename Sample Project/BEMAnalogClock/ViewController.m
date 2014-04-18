@@ -96,8 +96,11 @@
 }
 
 - (IBAction)pushCurrentTimeButton:(id)sender {
-    [self.myClock1 setClockToCurrentTime:YES];
-    [self.myClock2 setClockToCurrentTime:YES];
+    if (self.myClock1.realTimeIsActivated == NO) {
+        [self.myClock1 startRealTime];
+    } else {
+        [self.myClock1 stopRealTime];
+    }
 }
 
 - (void)matchHoursClock1ToClock2 {

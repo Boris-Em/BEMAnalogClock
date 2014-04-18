@@ -21,6 +21,7 @@
     /// Flag used to detect if there is already a NSTimer that updates every second for the property realTime. Default value is NO.
     BOOL timerAlreadyInAction;
     
+    /// Skip one cycle when the real time feature is on. Here to avoid animation conflicts.
     BOOL skipOneCycle;
 }
 
@@ -123,6 +124,7 @@
     shouldUpdateSubviews = YES;
     timerAlreadyInAction = NO;
     skipOneCycle = NO;
+    _realTimeIsActivated = NO;
 }
 
 - (void)layoutSubviews {
@@ -135,7 +137,7 @@
             [self getTimeFromString];
         
         if (self.currentTime == YES) {
-            [self setClockToCurrentTime:YES];
+            [self setClockToCurrentTimeAnimated:YES];
         }
         
         [self timeFormatVerification];
@@ -174,6 +176,7 @@
         }
         
         if (self.realTime == YES && timerAlreadyInAction == NO) {
+            _realTimeIsActivated = YES;
             timerAlreadyInAction = YES;
             [NSTimer scheduledTimerWithTimeInterval:1.0
                                              target:self
@@ -204,14 +207,16 @@
 #pragma mark - Real Time
 
 - (void)updateEverySecond {
-    self.seconds = self.seconds + 1;
-    if (skipOneCycle == YES) {
-        skipOneCycle = NO;
-    } else {
-        [self timeFormatVerification];
-
-        [self.animationDelegate rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
-        [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+    if (_realTimeIsActivated == YES) {
+        self.seconds = self.seconds + 1;
+        if (skipOneCycle == YES) {
+            skipOneCycle = NO;
+        } else {
+            [self timeFormatVerification];
+            
+            [self.animationDelegate rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
+            [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+        }
     }
 }
 
@@ -245,7 +250,7 @@
      [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
 }
 
-- (void)setClockToCurrentTime:(BOOL)animated {
+- (void)setClockToCurrentTimeAnimated:(BOOL)animated {
     NSDate *currentTime = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh"];
@@ -271,6 +276,22 @@
     }
     
     [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+}
+
+- (void)startRealTime {
+    _realTimeIsActivated = YES;
+    if (self.realTime == YES && timerAlreadyInAction == NO) {
+        timerAlreadyInAction = YES;
+        [NSTimer scheduledTimerWithTimeInterval:1.0
+                                         target:self
+                                       selector:@selector(updateEverySecond)
+                                       userInfo:nil
+                                        repeats:YES];
+    }
+}
+
+- (void)stopRealTime {
+    _realTimeIsActivated = NO;
 }
 
 #pragma mark - Touch Gestures

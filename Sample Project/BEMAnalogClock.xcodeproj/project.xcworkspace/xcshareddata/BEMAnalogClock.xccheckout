@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E90A1DEC-3AFE-4BDD-8DE5-2F07118F87B3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BEMAnalogClock</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>578132FB-7B74-4948-B122-2A9B7768B4E2</key>
+		<string>https://github.com/Boris-Em/BEMAnalogClock.git</string>
+		<key>9FCB32B5-7293-4585-9DBF-CD08D6D82270</key>
+		<string>https://github.com/Boris-Em/BEMAnalogClock.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BEMAnalogClocké/BEMAnalogClock.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>578132FB-7B74-4948-B122-2A9B7768B4E2</key>
+		<string>../../..</string>
+		<key>9FCB32B5-7293-4585-9DBF-CD08D6D82270</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Boris-Em/BEMAnalogClock.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>578132FB-7B74-4948-B122-2A9B7768B4E2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>578132FB-7B74-4948-B122-2A9B7768B4E2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BEMAnalogClock</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9FCB32B5-7293-4585-9DBF-CD08D6D82270</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BEMAnalogClocké</string>
+		</dict>
+	</array>
+</dict>
+</plist>

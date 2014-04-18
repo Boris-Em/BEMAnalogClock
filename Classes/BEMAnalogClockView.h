@@ -63,6 +63,9 @@
 /// If set to YES, the clock time can be updated via touch inputs. Default value is NO.
 @property (nonatomic) BOOL setTimeViaTouch;
 
+/// If set to YES, the clock real time feature is activated. Read only.
+@property (readonly, nonatomic) BOOL realTimeIsActivated;
+
 
 //----- CLOCK'S FACE CUSTOMIZATION -----//
 
@@ -149,7 +152,13 @@
 
 /** When called, this method will set the clock to the current time on the phone.
  @param animated If the change of position of the hands should be animated or not. */
-- (void)setClockToCurrentTime:(BOOL)animated;
+- (void)setClockToCurrentTimeAnimated:(BOOL)animated;
+
+/// Start the real time feature. The clock will be updated in real time (the second hand will move every second, the minute one every minute and the hour one every hour).
+- (void)startRealTime;
+
+/// Stops the real time feature. The clock will not move anymore.
+- (void)stopRealTime;
 
 @end
 
