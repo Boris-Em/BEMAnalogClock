@@ -161,7 +161,7 @@ The BOOL property `setTimeViaTouch`, when set to YES, provides a way to adjust t
 
 Thankfully, BEMAnalogClock is highly customizable.
 
-<p align="center"><img src="http://s10.postimg.org/82mkeach5/Legende.png"/></p>
+<p align="center"><img src="http://s24.postimg.org/qtdne4ih1/Legende.png"/></p>
 
 #### Customization of the hands
 Different properties are here to customize the hands of a clock created with BEMAnalogClock.  
@@ -206,7 +206,7 @@ Here is an example on how to use the `graduationLengthForIndex:` method:
 
 And here is the result of the above example. The 30th graduation of the clock is longer than the other ones. One graduation in every five graduation is also longer than the rest.</p>
   
-You can use the BOOL property `enableGraduations` to activate or deactivate the graduations on the clock. If it is set to YES the graduations will be visible, if set to NO, they won't (default value is NO).
+You can use the BOOL property `enableGraduations` to activate or deactivate the graduations on the clock. If it is set to YES the graduations will be visible, if set to NO, they won't (default value is YES).
 
 ### Status reporting
 
