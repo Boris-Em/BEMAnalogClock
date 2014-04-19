@@ -21,7 +21,7 @@
 #import "BEMHourHand.h"
 #import "BEMSecondHand.h"
 
-@protocol BEMAlarmClockDelegate;
+@protocol BEMAnalogClockDelegate;
 
 /// BEMAnalogClock is an UIView subclass that gives you an easy way to create beautiful, interactive analog clocks for iOS.
 @interface BEMAnalogClockView : UIView <BEMAnimationDelegate, UIGestureRecognizerDelegate>
@@ -31,8 +31,8 @@
 //----- DELEGATE ---------------------------------------------------------------------//
 //------------------------------------------------------------------------------------//
 
-/// BEMAlarmClockView delegate object is essential to the clock. The delegate provides the clock with data and various parameters. The delegate can be set from the interface or from code.
-@property (nonatomic, weak) id <BEMAlarmClockDelegate> delegate;
+/// BEMAnalogClockView delegate object is essential to the clock. The delegate provides the clock with data and various parameters. The delegate can be set from the interface or from code.
+@property (nonatomic, weak) id <BEMAnalogClockDelegate> delegate;
 
 
 //------------------------------------------------------------------------------------//
@@ -163,7 +163,7 @@
 @end
 
 
-@protocol BEMAlarmClockDelegate <NSObject>
+@protocol BEMAnalogClockDelegate <NSObject>
 
 @optional
 

@@ -43,7 +43,7 @@
         [pathShadow addLineToPoint:CGPointMake(P2.x - 3, P2.y + 3)];
         pathShadow.lineCapStyle = kCGLineCapSquare;
         [[UIColor blackColor] set];
-        [pathShadow strokeWithBlendMode:kCGBlendModeNormal alpha:0.1];
+        [pathShadow strokeWithBlendMode:kCGBlendModeNormal alpha:self.alphaH/10];
     }
     
     UIBezierPath *path1 = [UIBezierPath bezierPath];

@@ -95,7 +95,7 @@
     _currentTime = NO;
     _setTimeViaTouch = NO;
     
-    _faceBackgroundColor = [UIColor lightGrayColor];
+    _faceBackgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
     _faceBackgroundAlpha = 0.95;
     
     _borderColor = [UIColor whiteColor];
@@ -406,7 +406,7 @@
         for (int i = 0; i<60; i++) {
             if ([self.delegate respondsToSelector:@selector(analogClock:graduationColorForIndex:)]) {
                 self.graduationColor = [self.delegate analogClock:self graduationColorForIndex:i];
-            } else self.graduationColor = [UIColor blackColor];
+            } else self.graduationColor = [UIColor whiteColor];
         
             if ([self.delegate respondsToSelector:@selector(analogClock:graduationAlphaForIndex:)]) {
                 self.graduationAlpha = [self.delegate analogClock:self graduationAlphaForIndex:i];

@@ -10,7 +10,7 @@
 #import "BEMAnalogClockView.h"
 #import "BEMMinuteHand.h"
 
-@interface ViewController : UIViewController <BEMAlarmClockDelegate, UIGestureRecognizerDelegate>
+@interface ViewController : UIViewController <BEMAnalogClockDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet BEMAnalogClockView *myClock1; // The big, main clock.
 @property (weak, nonatomic) IBOutlet BEMAnalogClockView *myClock2; // The smaller clock.
