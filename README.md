@@ -5,6 +5,27 @@
 <b>BEMAnalogClock</b> makes it easy to create and customize clocks for iOS.
 </p>
 
+## Table of Contents
+
+* [**Project Details**](#project-details)
+  * [Requirements](#requirements)
+  * [License](#license)
+  * [Contributions](#contributions)
+  * [Sample App](#sample-app)
+  * [Support](#support)
+* [**Documentation**](#documentation)
+  * [Installation](#installation)
+  * [Setup](#setup)
+  * [Setting up the time on the clock](#setting-up-the-time-on-the-clock)
+  * [Reloading the clock](#reloading-the-clock) 
+  * [Updating the time on the clock](#updating-the-time-on-the-clock)
+  * [Current time](#current-time)
+  * [Real time](#real-time)
+  * [Time reporting](#time-reporting)
+  * [Adjusting the time on the clock via touch](#adjusting-the-time-on-the-clock-via-touch)
+  * [Customization](#customization)
+  * [Status reporting](#status-reporting)
+
 ## Project Details
 Learn more about the BEMAnalogClock project requirements, licensing, and contributions.
 
@@ -140,7 +161,7 @@ Or you can use the methods `startRealTime` and `stopRealTime` to start/stop the 
     
 The property `realTimeIsActivated` (read only) reports if the clock is currently using the real time feature or not.
 
-### Current time displayed on the clock
+### Time reporting
 The method `currentTimeOnClock:` is here to get the time currently displayed on the clock. It gets called every time the clock is updated. The parameters `hours`, `minutes` and `seconds` are strings of the hours, minutes and seconds currently displayed on the clock.  
 Here is an example on how to use the method:
 
