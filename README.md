@@ -135,12 +135,6 @@ When initializing the clock, you can set the property `currentTime` to YES (defa
   	myClock.currentTime = YES;
 
 
-Or you can call the method `setClockToCurrentTimeAnimatedAnimated:`. The parameter `animated` is similar to the one of `updateTimeAnimated`. It controls if the hands of the clock should move with an animation to the new position or not.
-
-    - (void)anyMethodInYourOwnController {
-        [self.myClock setClockToCurrentTimeAnimatedAnimated:YES]; // Set the time on the clock to the one on the user's device
-    }
-
 Or you can call the method `setClockToCurrentTimeAnimated:`. The parameter `animated` is similar to the one of `updateTimeAnimated`. It controls if the hands of the clock should move with an animation to the new position or not.
 
     - (void)anyMethodInYourOwnController {
