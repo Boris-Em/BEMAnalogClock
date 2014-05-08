@@ -74,7 +74,10 @@
 
 - (void)currentTimeOnClock:(BEMAnalogClockView *)clock Hours:(NSString *)hours Minutes:(NSString *)minutes Seconds:(NSString *)seconds {
     if (clock.tag == 1) {
-        self.myLabel.text = [NSString stringWithFormat:@"%@:%@:%@", hours, minutes, seconds];
+        int hoursInt = [hours intValue];
+        int minutesInt = [minutes intValue];
+        int secondsInt = [seconds intValue];
+        self.myLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hoursInt, minutesInt, secondsInt];
      }
 }
 
