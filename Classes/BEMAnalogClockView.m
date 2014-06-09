@@ -196,9 +196,11 @@
             [panView addGestureRecognizer:panGesture];
         }
         
+        if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
         [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+        }
         shouldUpdateSubviews = NO;
-        
+    
         if ([self.delegate respondsToSelector:@selector(clockDidFinishLoading:)])
             [self.delegate clockDidFinishLoading:self];
     }
@@ -215,7 +217,9 @@
             [self timeFormatVerification];
             
             [self.animationDelegate rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
+            if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
             [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+            }
         }
     }
 }
@@ -246,8 +250,9 @@
          self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
          self.secondHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.seconds])*(M_PI/180));
      }
-    
+    if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
      [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+    }
 }
 
 - (void)setClockToCurrentTimeAnimated:(BOOL)animated {
@@ -274,8 +279,9 @@
         self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
         self.secondHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.seconds])*(M_PI/180));
     }
-    
+    if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
     [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+    }
 }
 
 - (void)startRealTime {
@@ -317,7 +323,9 @@
     self.minuteHand.transform = CGAffineTransformMakeRotation(angleInRadians + M_PI/2);
     self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
     
-    [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+    if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
+        [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+    }
 }
 
 #pragma mark - Conversions/Calculations
