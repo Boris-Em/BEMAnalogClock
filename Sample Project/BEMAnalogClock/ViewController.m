@@ -27,6 +27,8 @@
     self.myClock1.faceBackgroundColor = [UIColor whiteColor];
     self.myClock1.faceBackgroundAlpha = 0.0;
     self.myClock1.delegate = self;
+    self.myClock1.digitFont = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
+    self.myClock1.digitColor = [UIColor whiteColor];
     
     self.myClock2.setTimeViaTouch = NO;
     self.myClock2.enableGraduations = NO;
