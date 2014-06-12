@@ -119,6 +119,9 @@
     _secondHandWidth = 1;
     _secondHandLength = 60;
     _secondHandOffsideLength = 20;
+
+    _digitColor = [UIColor whiteColor];
+    _digitFont  = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
     
     self.backgroundColor = [UIColor clearColor];
     shouldUpdateSubviews = YES;
@@ -445,6 +448,18 @@
             [self.graduationColor set];
         
             [path1 strokeWithBlendMode:kCGBlendModeNormal alpha:self.graduationAlpha];
+        }
+
+        // DIGIT DRAWING
+        CGPoint center = CGPointMake(rect.size.width/2.0f, rect.size.height/2.0f);
+        CGFloat markingDistanceFromCenter = rect.size.width/2.0f - self.digitFont.lineHeight/4.0f - 15;
+        NSInteger offset = 4;
+
+        for(unsigned i = 0; i < 12; i ++){
+            NSString *hourNumber = [NSString stringWithFormat:@"%@%d", [NSString stringWithFormat:@"%@", i+1<10 ? @" ": @""] , i + 1 ];
+            CGFloat labelX = center.x + (markingDistanceFromCenter - self.digitFont.lineHeight/2.0f) * cos( (M_PI/180)* (i+offset) * 30 + M_PI);
+            CGFloat labelY = center.y + - 1 * (markingDistanceFromCenter - self.digitFont.lineHeight/2.0f) * sin((M_PI/180)*(i+offset) * 30);
+            [hourNumber drawInRect:CGRectMake(labelX - self.digitFont.lineHeight/2.0f,labelY - self.digitFont.lineHeight/2.0f,self.digitFont.lineHeight,self.digitFont.lineHeight) withAttributes:@{NSForegroundColorAttributeName: self.digitColor, NSFontAttributeName: self.digitFont}];
         }
     }
 }
