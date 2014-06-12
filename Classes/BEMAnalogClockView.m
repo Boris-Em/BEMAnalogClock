@@ -235,6 +235,7 @@
     }
     shouldUpdateSubviews = YES;
     [self setNeedsLayout];
+    [self setNeedsDisplay];
 }
 
 - (void)updateTimeAnimated:(BOOL)animated {
