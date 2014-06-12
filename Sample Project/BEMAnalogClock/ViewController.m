@@ -9,7 +9,9 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+@property (nonatomic,strong) NSDateFormatter *dateFormatter;
+@property (nonatomic,strong) NSCalendar *calendar;
+@property (nonatomic,strong) NSDate *date;
 @end
 
 @implementation ViewController
@@ -48,7 +50,8 @@
     self.myClock2.hourHandOffsideLength = 0;
     self.myClock2.secondHandAlpha = 0;
     self.myClock2.delegate = self;
-    
+    self.myClock2.userInteractionEnabled = NO;
+
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     panGesture.delegate = self;
     [panGesture setMaximumNumberOfTouches:1];
@@ -85,7 +88,24 @@
 
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer {
     CGPoint translation = [recognizer locationInView:self.view];
-    self.myClock1.minutes = translation.x / 5.33333;
+//    self.myClock1.minutes = translation.x / 5.33333;
+
+    float minutes = translation.x/2.666667;  // 320 width / 2.666667 = 120 minutes [2 hours]
+
+    if (!_dateFormatter){
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        [_dateFormatter setDateFormat:@"HH:mm:ss"];
+        _calendar = [NSCalendar currentCalendar];
+        _date = [_dateFormatter dateFromString:self.myLabel.text];
+    }
+    NSDate           *datePlusMinutes = [_date dateByAddingTimeInterval:minutes*60];
+    NSDateComponents *components      = [_calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:datePlusMinutes];
+    NSInteger hour   = [components hour];
+    NSInteger minute = [components minute];
+
+    self.myClock1.minutes = minute;
+    self.myClock1.hours   = hour;
+
     [self matchHoursClock1ToClock2];
     [self.myClock1 updateTimeAnimated:NO];
     [self.myClock2 updateTimeAnimated:NO];
