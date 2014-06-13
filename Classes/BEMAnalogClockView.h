@@ -84,6 +84,12 @@
 /// The width of the clock's border.
 @property (nonatomic) CGFloat borderWidth;
 
+/// The font of the digits appearing inside the clock
+@property (strong, nonatomic) UIFont *digitFont;
+
+/// The color of the digits appearing inside the clock
+@property (strong, nonatomic) UIColor *digitColor;
+
 
 //----- HOURS HAND CUSTOMIZATION -----//
 
