@@ -54,6 +54,9 @@
 /// If set to YES, the graduation on the clock will be visible. See the methods bellow to costumize the graduations. Default value is YES.
 @property (nonatomic) BOOL enableGraduations;
 
+/// If set to YES, the digits (1-12) will be displayed on the face of the clock. Default value is NO.
+@property (nonatomic) BOOL enableDigit;
+
 /// If set to YES, the clock will be updated in real time (the second hand will move every second, the minute hand every minute...). Default value is NO;
 @property (nonatomic) BOOL realTime;
 
@@ -89,6 +92,9 @@
 
 /// The color of the digits appearing inside the clock
 @property (strong, nonatomic) UIColor *digitColor;
+
+/// The offset for the position of the digits on the clock's face. A value >0 will make the digits appear further away from the center of the clock. A valut <0 will make them closer to the center of the clock. Default value is 0.0.
+@property (nonatomic) CGFloat digitOffset;
 
 
 //----- HOURS HAND CUSTOMIZATION -----//
