@@ -223,6 +223,18 @@ And here is the result of the above example. The 30th graduation of the clock is
   
 You can use the BOOL property `enableGraduations` to activate or deactivate the graduations on the clock. If it is set to YES the graduations will be visible, if set to NO, they won't (default value is YES).
 
+#### Displaying digits on the clock's face
+<p align="center"><img src="http://s22.postimg.org/nd1vaewoh/BEMAnalog_Clock_Digits.jpg"/></p>
+<b>BEMAnalogClock</b> gives you the option to display 12 digits on the clock's face. To do so, simply set the property `enableDigit` to YES.
+
+    self.myClock.enableDigit = YES;
+    
+Three properties are here to customize this feature: `digitColor`, `digitFont` and `digitOffset`.
+
+    self.myClock.digitColor = [UIColor whiteColor]; // The color of the digits displayed on the clock.
+    self.myClock.digitFont = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17]; // The font of the digits displayed on the clock.
+    self.myClock.digitOffset = 10; // The offset for the position of the digits from the center of the clock.
+
 ### Status reporting
 
 When the clock starts or completes loading it will call a delegate method. When it begins reloading the `clockDidBeginLoading:` method is called. When loading is finished, the `clockDidFinishLoading:` method is called (please note that as of now, the animation is not complete when this delegate method is called).
