@@ -225,7 +225,7 @@ You can use the BOOL property `enableGraduations` to activate or deactivate the 
 
 #### Displaying digits on the clock's face
 <p align="center"><img src="http://s22.postimg.org/nd1vaewoh/BEMAnalog_Clock_Digits.jpg"/></p>
-<b>BEMAnalogClock</b> gives you the option to display 12 digits on the clock's face. To do so, simply set the property `enableDigit` to YES.
+<b>BEMAnalogClock</b> gives you the option to display 12 digits on the clock's face. To do so, simply set the BELL property `enableDigit` to YES.
 
     self.myClock.enableDigit = YES;
     
