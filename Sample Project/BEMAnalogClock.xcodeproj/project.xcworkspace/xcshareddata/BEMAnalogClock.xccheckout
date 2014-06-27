@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D6BC7D39-16DA-46A4-8054-CE3C34F43C80</string>
+	<string>51F224D9-F6FE-4341-BED9-207E9EA4D668</string>
 	<key>IDESourceControlProjectName</key>
 	<string>BEMAnalogClock</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>578132FB-7B74-4948-B122-2A9B7768B4E2</key>
-		<string>https://github.com/Boris-Em/BEMAnalogClock.git</string>
+		<key>D1DEC26E-7C7F-4C82-83D7-26F1A4721F3C</key>
+		<string>https://github.com/mythodeia/BEMAnalogClock.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Sample Project/BEMAnalogClock.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>578132FB-7B74-4948-B122-2A9B7768B4E2</key>
+		<key>D1DEC26E-7C7F-4C82-83D7-26F1A4721F3C</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Boris-Em/BEMAnalogClock.git</string>
+	<string>https://github.com/mythodeia/BEMAnalogClock.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>578132FB-7B74-4948-B122-2A9B7768B4E2</string>
+	<string>D1DEC26E-7C7F-4C82-83D7-26F1A4721F3C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>578132FB-7B74-4948-B122-2A9B7768B4E2</string>
+			<string>D1DEC26E-7C7F-4C82-83D7-26F1A4721F3C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>BEMAnalogClock</string>
 		</dict>
