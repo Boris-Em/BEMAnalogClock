@@ -264,7 +264,7 @@
 - (void)setClockToCurrentTimeAnimated:(BOOL)animated {
     NSDate *currentTime = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"hh"];
+    [dateFormatter setDateFormat:@"HH"];
     NSString *currentHour = [dateFormatter stringFromDate: currentTime];
     [dateFormatter setDateFormat:@"mm"];
     NSString *currentMinute = [dateFormatter stringFromDate: currentTime];
