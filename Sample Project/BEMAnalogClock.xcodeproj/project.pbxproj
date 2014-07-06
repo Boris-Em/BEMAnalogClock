@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22C073651969128F00717B3B /* KSMHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C073641969128F00717B3B /* KSMHand.m */; };
 		C343609918BAEB8F0056E6CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C343609818BAEB8F0056E6CE /* Foundation.framework */; };
 		C343609B18BAEB8F0056E6CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C343609A18BAEB8F0056E6CE /* CoreGraphics.framework */; };
 		C343609D18BAEB8F0056E6CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C343609C18BAEB8F0056E6CE /* UIKit.framework */; };
@@ -22,10 +23,6 @@
 		C34360C218BAEB900056E6CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C34360C018BAEB900056E6CE /* InfoPlist.strings */; };
 		C34360C418BAEB900056E6CE /* BEMAnalogClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C34360C318BAEB900056E6CE /* BEMAnalogClockTests.m */; };
 		C3DC800D1900D3060080FF06 /* BEMAnalogClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC80041900D3060080FF06 /* BEMAnalogClockView.m */; };
-		C3DC800E1900D3060080FF06 /* BEMHandsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC80061900D3060080FF06 /* BEMHandsAnimation.m */; };
-		C3DC800F1900D3060080FF06 /* BEMHourHand.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC80081900D3060080FF06 /* BEMHourHand.m */; };
-		C3DC80101900D3060080FF06 /* BEMMinuteHand.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC800A1900D3060080FF06 /* BEMMinuteHand.m */; };
-		C3DC80111900D3060080FF06 /* BEMSecondHand.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC800C1900D3060080FF06 /* BEMSecondHand.m */; };
 		C3DC80131900D3110080FF06 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C3DC80121900D3110080FF06 /* LICENSE */; };
 		C3DC80151900D3580080FF06 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C3DC80141900D3580080FF06 /* README.md */; };
 /* End PBXBuildFile section */
@@ -41,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22C073631969128F00717B3B /* KSMHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSMHand.h; path = ../Classes/KSMHand.h; sourceTree = "<group>"; };
+		22C073641969128F00717B3B /* KSMHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSMHand.m; path = ../Classes/KSMHand.m; sourceTree = "<group>"; };
 		C343609518BAEB8F0056E6CE /* BEMAnalogClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEMAnalogClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C343609818BAEB8F0056E6CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C343609A18BAEB8F0056E6CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,14 +61,6 @@
 		C34360C318BAEB900056E6CE /* BEMAnalogClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BEMAnalogClockTests.m; sourceTree = "<group>"; };
 		C3DC80031900D3060080FF06 /* BEMAnalogClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMAnalogClockView.h; path = ../Classes/BEMAnalogClockView.h; sourceTree = "<group>"; };
 		C3DC80041900D3060080FF06 /* BEMAnalogClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMAnalogClockView.m; path = ../Classes/BEMAnalogClockView.m; sourceTree = "<group>"; };
-		C3DC80051900D3060080FF06 /* BEMHandsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMHandsAnimation.h; path = ../Classes/BEMHandsAnimation.h; sourceTree = "<group>"; };
-		C3DC80061900D3060080FF06 /* BEMHandsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMHandsAnimation.m; path = ../Classes/BEMHandsAnimation.m; sourceTree = "<group>"; };
-		C3DC80071900D3060080FF06 /* BEMHourHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMHourHand.h; path = ../Classes/BEMHourHand.h; sourceTree = "<group>"; };
-		C3DC80081900D3060080FF06 /* BEMHourHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMHourHand.m; path = ../Classes/BEMHourHand.m; sourceTree = "<group>"; };
-		C3DC80091900D3060080FF06 /* BEMMinuteHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMMinuteHand.h; path = ../Classes/BEMMinuteHand.h; sourceTree = "<group>"; };
-		C3DC800A1900D3060080FF06 /* BEMMinuteHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMMinuteHand.m; path = ../Classes/BEMMinuteHand.m; sourceTree = "<group>"; };
-		C3DC800B1900D3060080FF06 /* BEMSecondHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BEMSecondHand.h; path = ../Classes/BEMSecondHand.h; sourceTree = "<group>"; };
-		C3DC800C1900D3060080FF06 /* BEMSecondHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BEMSecondHand.m; path = ../Classes/BEMSecondHand.m; sourceTree = "<group>"; };
 		C3DC80121900D3110080FF06 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		C3DC80141900D3580080FF06 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,14 +170,8 @@
 			children = (
 				C3DC80031900D3060080FF06 /* BEMAnalogClockView.h */,
 				C3DC80041900D3060080FF06 /* BEMAnalogClockView.m */,
-				C3DC80051900D3060080FF06 /* BEMHandsAnimation.h */,
-				C3DC80061900D3060080FF06 /* BEMHandsAnimation.m */,
-				C3DC80071900D3060080FF06 /* BEMHourHand.h */,
-				C3DC80081900D3060080FF06 /* BEMHourHand.m */,
-				C3DC80091900D3060080FF06 /* BEMMinuteHand.h */,
-				C3DC800A1900D3060080FF06 /* BEMMinuteHand.m */,
-				C3DC800B1900D3060080FF06 /* BEMSecondHand.h */,
-				C3DC800C1900D3060080FF06 /* BEMSecondHand.m */,
+				22C073631969128F00717B3B /* KSMHand.h */,
+				22C073641969128F00717B3B /* KSMHand.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -293,14 +278,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3DC800E1900D3060080FF06 /* BEMHandsAnimation.m in Sources */,
+				22C073651969128F00717B3B /* KSMHand.m in Sources */,
 				C3DC800D1900D3060080FF06 /* BEMAnalogClockView.m in Sources */,
 				C34360AF18BAEB900056E6CE /* ViewController.m in Sources */,
-				C3DC800F1900D3060080FF06 /* BEMHourHand.m in Sources */,
 				C34360A918BAEB900056E6CE /* AppDelegate.m in Sources */,
-				C3DC80111900D3060080FF06 /* BEMSecondHand.m in Sources */,
 				C34360A518BAEB900056E6CE /* main.m in Sources */,
-				C3DC80101900D3060080FF06 /* BEMMinuteHand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
