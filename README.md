@@ -1,4 +1,7 @@
 # BEMAnalogClock
+
+[![Build Status](https://travis-ci.org/Boris-Em/BEMAnalogClock.svg?branch=master)](https://travis-ci.org/Boris-Em/BEMAnalogClock)
+
 <p align="center"><img src="http://s18.postimg.org/hsff40p5l/BEMAnalog_Clock_Main.png"/></p>
 
 <p align="center">
