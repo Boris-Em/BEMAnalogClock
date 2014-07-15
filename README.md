@@ -55,7 +55,7 @@ All methods, properties, types, and delegate methods available on the BEMAnalogC
 
 ### Installation
 The easiest way to install BEMAnalogClock is to use <a href="http://cocoapods.org/" target="_blank">CocoaPods</a>. To do so, simply add the following line to your `Podfile`:
-	<pre><code>pod BEMAnalogClock</code></pre>
+	<pre><code>pod 'BEMAnalogClock'</code></pre>
 	
 The other way to install BEMAnalogClock, is to drag and drop the *Classes* folder into your Xcode project. When you do so, check the "*Copy items into destination group's folder*" box. 
 
