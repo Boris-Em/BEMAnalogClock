@@ -24,9 +24,6 @@
 /// The color of the the hand instance
 @property (strong, nonatomic) UIColor *color;
 
-/// The transparency of the hand instance
-@property (nonatomic) CGFloat alpha;
-
 /// The widgth of the hand instance
 @property (nonatomic) CGFloat width;
 
