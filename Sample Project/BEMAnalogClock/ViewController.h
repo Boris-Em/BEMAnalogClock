@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BEMAnalogClockView.h"
-#import "BEMMinuteHand.h"
 
 @interface ViewController : UIViewController <BEMAnalogClockDelegate, UIGestureRecognizerDelegate>
 

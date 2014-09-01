@@ -17,14 +17,12 @@
     #import <CoreGraphics/CoreGraphics.h>
 #endif
 
-#import "BEMMinuteHand.h"
-#import "BEMHourHand.h"
-#import "BEMSecondHand.h"
+#import "KSMHand.h"
 
 @protocol BEMAnalogClockDelegate;
 
 /// BEMAnalogClock is an UIView subclass that gives you an easy way to create beautiful, interactive analog clocks for iOS.
-@interface BEMAnalogClockView : UIView <BEMAnimationDelegate, UIGestureRecognizerDelegate>
+@interface BEMAnalogClockView : UIView <UIGestureRecognizerDelegate>
 
 
 //------------------------------------------------------------------------------------//

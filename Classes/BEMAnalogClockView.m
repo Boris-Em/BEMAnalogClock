@@ -25,9 +25,6 @@
     BOOL skipOneCycle;
 }
 
-/// The animation delegate for the hands
-@property (strong, nonatomic) BEMHandsAnimation *animationDelegate;
-
 /// Private property for the graduations' color of the clock. Default value is blackColor. Gets its value from calling graduationColorForIndex:
 @property (weak, nonatomic) UIColor *graduationColor;
 
@@ -47,13 +44,13 @@
 @property (nonatomic, assign) NSInteger oldMinutes;
 
 /// The minute hand. Subclass of UIView.
-@property (nonatomic, strong) BEMHourHand *hourHand;
+@property (nonatomic, strong) KSMHand *hourHand;
 
 /// The minute hand. Subclass of UIView.
-@property (nonatomic, strong) BEMMinuteHand *minuteHand;
+@property (nonatomic, strong) KSMHand *minuteHand;
 
 /// The second hand. Subclass of UIView.
-@property (nonatomic, strong) BEMSecondHand *secondHand;
+@property (nonatomic, strong) KSMHand *secondHand;
 
 @end
 
@@ -79,10 +76,6 @@
 
 - (void)commonInit {
     // Do any initialization that's common to both -initWithFrame: and -initWithCoder: in this method
-    
-    // Set the animation delegate
-    _animationDelegate = [[BEMHandsAnimation alloc] init];
-    _animationDelegate.delegate = self;
     
     // DEFAULT VALUES
     _hours = 10;
@@ -147,37 +140,37 @@
         
         [self timeFormatVerification];
         
-        self.hourHand = [[BEMHourHand alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        self.hourHand.hourDegree = [self degreesFromHour:self.hours andMinutes:self.minutes];
-        self.hourHand.colorH = self.hourHandColor;
-        self.hourHand.alphaH = self.hourHandAlpha;
-        self.hourHand.widthH = self.hourHandWidth;
-        self.hourHand.lengthH = self.hourHandLength;
-        self.hourHand.OffsetLengthH = self.hourHandOffsideLength;
+        self.hourHand = [[KSMHand alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.hourHand.degree = [self degreesFromHour:self.hours andMinutes:self.minutes];
+        self.hourHand.color = self.hourHandColor;
+        self.hourHand.alpha = self.hourHandAlpha;
+        self.hourHand.width = self.hourHandWidth;
+        self.hourHand.length = self.hourHandLength;
+        self.hourHand.offsetLength = self.hourHandOffsideLength;
         [self addSubview:self.hourHand];
         
-        self.minuteHand = [[BEMMinuteHand alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        self.minuteHand.minuteDegree = [self degreesFromMinutes:self.minutes];
-        self.minuteHand.colorM = self.minuteHandColor;
-        self.minuteHand.alphaM = self.minuteHandAlpha;
-        self.minuteHand.widthM = self.minuteHandWidth;
-        self.minuteHand.lengthM = self.minuteHandLength;
-        self.minuteHand.OffsetLengthM = self.minuteHandOffsideLength;
+        self.minuteHand = [[KSMHand alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.minuteHand.degree = [self degreesFromMinutes:self.minutes];
+        self.minuteHand.color = self.minuteHandColor;
+        self.minuteHand.alpha = self.minuteHandAlpha;
+        self.minuteHand.width = self.minuteHandWidth;
+        self.minuteHand.length = self.minuteHandLength;
+        self.minuteHand.offsetLength = self.minuteHandOffsideLength;
         [self addSubview:self.minuteHand];
         
-        self.secondHand = [[BEMSecondHand alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        self.secondHand.secondDegree = [self degreesFromMinutes:self.seconds];
-        self.secondHand.colorS = self.secondHandColor;
-        self.secondHand.alphaS = self.secondHandAlpha;
-        self.secondHand.widthS = self.secondHandWidth;
-        self.secondHand.lengthS = self.secondHandLength;
-        self.secondHand.OffsetLengthS = self.secondHandOffsideLength;
+        self.secondHand = [[KSMHand alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.secondHand.degree = [self degreesFromMinutes:self.seconds];
+        self.secondHand.color = self.secondHandColor;
+        self.secondHand.alpha = self.secondHandAlpha;
+        self.secondHand.width = self.secondHandWidth;
+        self.secondHand.length = self.secondHandLength;
+        self.secondHand.offsetLength = self.secondHandOffsideLength;
         [self addSubview:self.secondHand];
         
         if (self.enableShadows == NO) {
-            self.hourHand.enableHourHandShadow = NO;
-            self.minuteHand.enableMinuteHandShadow = NO;
-            self.secondHand.enableSecondHandShadow = NO;
+            self.hourHand.shadowEnabled = NO;
+            self.minuteHand.shadowEnabled = NO;
+            self.secondHand.shadowEnabled = NO;
         }
         
         if (self.realTime == YES && timerAlreadyInAction == NO) {
@@ -221,7 +214,7 @@
         } else {
             [self timeFormatVerification];
             
-            [self.animationDelegate rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
+            [KSMHand rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
             if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
             [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
             }
@@ -248,9 +241,9 @@
     
      if (animated == YES) {
          skipOneCycle = YES;
-         [self.animationDelegate rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
-         [self.animationDelegate rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
-         [self.animationDelegate rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
+         [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
+         [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
+         [KSMHand rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
      } else {
          self.minuteHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.minutes])*(M_PI/180));
          self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
@@ -277,9 +270,9 @@
     
     if (animated == YES) {
         skipOneCycle = YES;
-        [self.animationDelegate rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
-        [self.animationDelegate rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
-        [self.animationDelegate rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
+        [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
+        [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
+        [KSMHand rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
     } else {
         self.minuteHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.minutes])*(M_PI/180));
         self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
@@ -343,14 +336,14 @@
     if (self.seconds >= 60) {
         self.seconds = 0;
         self.minutes = self.minutes + 1;
-        [self.animationDelegate rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
-        [self.animationDelegate rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
+        [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
+        [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
     }
     else if (self.seconds < 0) {
         self.seconds = 59;
         self.minutes = self.minutes - 1;
-        [self.animationDelegate rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
-        [self.animationDelegate rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
+        [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
+        [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
     }
     
     if (self.minutes >= 60) {
