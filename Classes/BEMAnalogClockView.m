@@ -257,7 +257,7 @@
 - (void)setClockToCurrentTimeAnimated:(BOOL)animated {
     NSDate *currentTime = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"hh"];
+    [dateFormatter setDateFormat:@"HH"];
     NSString *currentHour = [dateFormatter stringFromDate: currentTime];
     [dateFormatter setDateFormat:@"mm"];
     NSString *currentMinute = [dateFormatter stringFromDate: currentTime];
@@ -312,13 +312,15 @@
     }
     else if (self.oldMinutes < 15 && self.minutes > 45) { // If the user drags the minute hand from 00 to 59, updates the hour on the clock.
         self.hours--;
+        if (self.hours == 00) {
+            self.hours = 23;
+        }
     }
-    if (self.hours >= 13) {
-        self.hours = 1;
+
+    if (self.hours == 24) {
+        self.hours = 0;
     }
-    else if (self.hours <= 0) {
-        self.hours = 12;
-    }
+
     self.minuteHand.transform = CGAffineTransformMakeRotation(angleInRadians + M_PI/2);
     self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
     
@@ -330,9 +332,7 @@
 #pragma mark - Conversions/Calculations
 
 - (void)timeFormatVerification {
-    if (self.hours > 12) // If the time has been set to military time, converts it to 12-hour clock.
-        self.hours = self.hours - 12;
-    
+
     if (self.seconds >= 60) {
         self.seconds = 0;
         self.minutes = self.minutes + 1;
@@ -353,13 +353,6 @@
     else if (self.minutes < 0) {
         self.minutes = 59;
         self.hours = self.hours - 1;
-    }
-    
-    if (self.hours >= 13) {
-        self.hours = 1;
-    }
-    else if (self.hours < 1) {
-        self.hours = 12;
     }
 }
 
