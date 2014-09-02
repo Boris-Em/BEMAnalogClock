@@ -123,6 +123,7 @@
     timerAlreadyInAction = NO;
     skipOneCycle = NO;
     _realTimeIsActivated = NO;
+    _militaryTime = NO;
 }
 
 - (void)layoutSubviews {
@@ -313,11 +314,18 @@
     else if (self.oldMinutes < 15 && self.minutes > 45) { // If the user drags the minute hand from 00 to 59, updates the hour on the clock.
         self.hours--;
     }
-    if (self.hours >= 13) {
-        self.hours = 1;
-    }
-    else if (self.hours <= 0) {
-        self.hours = 12;
+    if (self.militaryTime == NO) {
+        if (self.hours >= 13) {
+            self.hours = 1;
+        } else if (self.hours <= 0) {
+            self.hours = 12;
+        }
+    } else {
+        if (self.hours >= 24) {
+            self.hours = 00;
+        } else if (self.hours <= 0) {
+            self.hours = 23;
+        }
     }
     self.minuteHand.transform = CGAffineTransformMakeRotation(angleInRadians + M_PI/2);
     self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
@@ -330,7 +338,7 @@
 #pragma mark - Conversions/Calculations
 
 - (void)timeFormatVerification {
-    if (self.hours > 12) // If the time has been set to military time, converts it to 12-hour clock.
+    if (self.hours > 12 && self.militaryTime == NO) // If the time has been set to military time, converts it to 12-hour clock.
         self.hours = self.hours - 12;
     
     if (self.seconds >= 60) {
@@ -354,12 +362,18 @@
         self.minutes = 59;
         self.hours = self.hours - 1;
     }
-    
-    if (self.hours >= 13) {
-        self.hours = 1;
-    }
-    else if (self.hours < 1) {
-        self.hours = 12;
+    if (self.militaryTime == NO) {
+        if (self.hours >= 13) {
+            self.hours = 1;
+        } else if (self.hours <= 0) {
+            self.hours = 12;
+        }
+    } else {
+        if (self.hours >= 24) {
+            self.hours = 00;
+        } else if (self.hours <= 0) {
+            self.hours = 23;
+        }
     }
 }
 

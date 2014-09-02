@@ -64,6 +64,9 @@
 /// If set to YES, the clock time can be updated via touch inputs. Default value is NO.
 @property (nonatomic) BOOL setTimeViaTouch;
 
+/// If set to YES, the clock time will suport military time. Default value is NO.
+@property (nonatomic) BOOL militaryTime;
+
 /// If set to YES, the clock real time feature is activated. Read only.
 @property (readonly, nonatomic) BOOL realTimeIsActivated;
 
