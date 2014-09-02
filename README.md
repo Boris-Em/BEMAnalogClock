@@ -27,7 +27,7 @@
   * [Time reporting](#time-reporting)
   * [Adjusting the time on the clock via touch](#adjusting-the-time-on-the-clock-via-touch)
   * [Customization](#customization)
-  * [Military Time](#military-time-(24-hours)
+  * [Military Time](#military-time-24-hours)
   * [Status reporting](#status-reporting)
 
 ## Project Details
