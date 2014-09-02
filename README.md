@@ -27,6 +27,7 @@
   * [Time reporting](#time-reporting)
   * [Adjusting the time on the clock via touch](#adjusting-the-time-on-the-clock-via-touch)
   * [Customization](#customization)
+  * [Military Time](#military-time-(24-hours)
   * [Status reporting](#status-reporting)
 
 ## Project Details
@@ -237,6 +238,14 @@ Three properties are here to customize this feature: `digitColor`, `digitFont` a
     self.myClock.digitColor = [UIColor whiteColor]; // The color of the digits displayed on the clock.
     self.myClock.digitFont = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17]; // The font of the digits displayed on the clock.
     self.myClock.digitOffset = 10; // The offset for the position of the digits from the center of the clock.
+    
+### Military Time (24 Hours)
+
+The BOOL property `militaryTime` gives the option to use the clock with military time.
+
+```Objective-C
+self.myClock.militaryTime = YES; //Defaults to NO
+```
 
 ### Status reporting
 
