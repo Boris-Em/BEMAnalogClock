@@ -85,6 +85,7 @@
     _enableShadows = YES;
     _enableGraduations = YES;
     _enableDigit = NO;
+    _enableHub = NO;
     _realTime = NO;
     _currentTime = NO;
     _setTimeViaTouch = NO;
@@ -113,6 +114,10 @@
     _secondHandWidth = 1;
     _secondHandLength = 60;
     _secondHandOffsideLength = 20;
+
+    _hubColor = [UIColor whiteColor];
+    _hubAlpha = 1.0;
+    _hubRadius = 3.0;
 
     _digitColor = [UIColor whiteColor];
     _digitFont  = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
@@ -423,7 +428,14 @@
     CGContextSetAlpha(ctx, self.borderAlpha);
     CGContextSetLineWidth(ctx,self.borderWidth);
     CGContextStrokePath(ctx);
-    
+
+    // HUB
+    CGContextSetFillColorWithColor(ctx, self.hubColor.CGColor);
+    CGContextSetAlpha(ctx, self.hubAlpha);
+    CGPoint center = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f);
+    CGContextAddArc(ctx, center.x, center.y, self.hubRadius, 0, 2 * M_PI, 0);
+    CGContextFillPath(ctx);
+
     // CLOCK'S GRADUATION
     if (self.enableGraduations == YES) {
         for (int i = 0; i<60; i++) {
