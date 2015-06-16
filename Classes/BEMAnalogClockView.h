@@ -55,6 +55,9 @@
 /// If set to YES, the digits (1-12) will be displayed on the face of the clock. Default value is NO.
 @property (nonatomic) BOOL enableDigit;
 
+/// If set to YES, a circular hub will be drawn. Default value is NO;
+@property (nonatomic) BOOL enableHub;
+
 /// If set to YES, the clock will be updated in real time (the second hand will move every second, the minute hand every minute...). Default value is NO;
 @property (nonatomic) BOOL realTime;
 
@@ -151,6 +154,17 @@
 /// The length of the offside part of the clock's second hand. Default value is 20.
 @property (nonatomic) CGFloat secondHandOffsideLength;
 
+
+//----- HUB CUSTOMIZATION -----//
+
+/// The color of the hub. Default value is whiteColor.
+@property (strong, nonatomic) UIColor *hubColor;
+
+/// The alpha of the clock's hub. Default value is 1.0.
+@property (nonatomic) CGFloat hubAlpha;
+
+/// The width of the clock's hub. Default value is 3.0.
+@property (nonatomic) CGFloat hubRadius;
 
 //------------------------------------------------------------------------------------//
 //----- METHODS ----------------------------------------------------------------------//

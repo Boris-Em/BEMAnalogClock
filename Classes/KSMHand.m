@@ -43,7 +43,7 @@
     [path stroke];
     
     // roatate the view by the allotted amount
-    [KSMHand rotateHand:self rotationDegree:self.degree];
+    self.transform =  CGAffineTransformMakeRotation(self.degree * (M_PI / 180));
 }
 
 #pragma mark Class Methods
@@ -53,7 +53,7 @@
     // animate for one second (default best time to animate - for a second hand
     // it will take exactly 1 second to move, and for the other hands it doesn't
     // really matter how long it takes to move.
-    [UIView animateWithDuration:1.0
+    [UIView animateWithDuration:1.5 //changed from 1.0
                      animations:^{
                          // set the angle of the hand to be how far offset the
                          // second is.
