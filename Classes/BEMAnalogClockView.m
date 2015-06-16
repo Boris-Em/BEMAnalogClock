@@ -376,7 +376,7 @@
     } else {
         if (self.hours >= 24) {
             self.hours = 00;
-        } else if (self.hours <= 0) {
+        } else if (self.hours < 0) {
             self.hours = 23;
         }
     }
