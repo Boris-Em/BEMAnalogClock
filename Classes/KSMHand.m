@@ -43,7 +43,7 @@
     [path stroke];
     
     // roatate the view by the allotted amount
-    [KSMHand rotateHand:self rotationDegree:self.degree];
+    self.transform =  CGAffineTransformMakeRotation(self.degree * (M_PI / 180));
 }
 
 #pragma mark Class Methods
