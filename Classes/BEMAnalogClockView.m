@@ -430,11 +430,13 @@
     CGContextStrokePath(ctx);
 
     // HUB
-    CGContextSetFillColorWithColor(ctx, self.hubColor.CGColor);
-    CGContextSetAlpha(ctx, self.hubAlpha);
-    CGPoint center = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f);
-    CGContextAddArc(ctx, center.x, center.y, self.hubRadius, 0, 2 * M_PI, 0);
-    CGContextFillPath(ctx);
+    if (self.enableHub == YES) {
+        CGContextSetFillColorWithColor(ctx, self.hubColor.CGColor);
+        CGContextSetAlpha(ctx, self.hubAlpha);
+        CGPoint center = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f);
+        CGContextAddArc(ctx, center.x, center.y, self.hubRadius, 0, 2 * M_PI, 0);
+        CGContextFillPath(ctx);
+    }
 
     // CLOCK'S GRADUATION
     if (self.enableGraduations == YES) {
