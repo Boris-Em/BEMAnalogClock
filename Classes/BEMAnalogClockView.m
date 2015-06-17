@@ -85,6 +85,7 @@
     _enableShadows = YES;
     _enableGraduations = YES;
     _enableDigit = NO;
+    _enableHub = NO;
     _realTime = NO;
     _currentTime = NO;
     _setTimeViaTouch = NO;
@@ -113,6 +114,10 @@
     _secondHandWidth = 1;
     _secondHandLength = 60;
     _secondHandOffsideLength = 20;
+
+    _hubColor = [UIColor whiteColor];
+    _hubAlpha = 1.0;
+    _hubRadius = 3.0;
 
     _digitColor = [UIColor whiteColor];
     _digitFont  = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
@@ -371,7 +376,7 @@
     } else {
         if (self.hours >= 24) {
             self.hours = 00;
-        } else if (self.hours <= 0) {
+        } else if (self.hours < 0) {
             self.hours = 23;
         }
     }
@@ -396,13 +401,15 @@
     NSDate *time = [dateFormatter dateFromString:stringTime];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSHourCalendarUnit |NSMinuteCalendarUnit) fromDate: time];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit |NSMinuteCalendarUnit |NSSecondCalendarUnit) fromDate: time];
     
     NSInteger hours = [components hour];
     NSInteger minutes = [components minute];
+    NSInteger seconds = [components second];
     
     self.hours = hours;
     self.minutes = minutes;
+    self.seconds = seconds;
 }
 
 #pragma mark - Drawings
@@ -421,7 +428,16 @@
     CGContextSetAlpha(ctx, self.borderAlpha);
     CGContextSetLineWidth(ctx,self.borderWidth);
     CGContextStrokePath(ctx);
-    
+
+    // HUB
+    if (self.enableHub == YES) {
+        CGContextSetFillColorWithColor(ctx, self.hubColor.CGColor);
+        CGContextSetAlpha(ctx, self.hubAlpha);
+        CGPoint center = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f);
+        CGContextAddArc(ctx, center.x, center.y, self.hubRadius, 0, 2 * M_PI, 0);
+        CGContextFillPath(ctx);
+    }
+
     // CLOCK'S GRADUATION
     if (self.enableGraduations == YES) {
         for (int i = 0; i<60; i++) {
