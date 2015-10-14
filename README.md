@@ -96,8 +96,8 @@ The easiest way is to change the values of the NSInteger properties `hours`, `mi
     self.myClock.minutes = 37;
     self.myClock.seconds = 10;
 
-**By conforming to these two methods**  
-The other way to set up the time on the clock is by using the methods ` timeForClock:` and ` dateFormatterForClock:`.
+**By conforming to the `BEMAnalogClockDelegate` protocol**  
+The other way to set up the time on the clock is by using the delegate methods ` timeForClock:` and ` dateFormatterForClock:`.
 `timeForClock:` should return a string containing the time you want the clock to be set up at.
 `dateFormatterForClock:` should return the date format (string) used by the string for the time.
 Here is an example on how these methods are used on a ViewController:
