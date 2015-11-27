@@ -88,7 +88,10 @@
     _enableHub = NO;
     _realTime = NO;
     _currentTime = NO;
+    
+#if !(TARGET_OS_TV)
     _setTimeViaTouch = NO;
+#endif
     
     _faceBackgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
     _faceBackgroundAlpha = 0.95;
@@ -189,16 +192,18 @@
                                             repeats:YES];
         }
         
+#if !(TARGET_OS_TV)
         if (self.setTimeViaTouch == YES) {
             UIView *panView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
             panView.backgroundColor = [UIColor clearColor];
-            [self.viewForBaselineLayout addSubview:panView];
+            [self.viewForLastBaselineLayout addSubview:panView];
             
             UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
             panGesture.delegate = self;
             [panGesture setMaximumNumberOfTouches:1];
             [panView addGestureRecognizer:panGesture];
         }
+#endif
         
         if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
         [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
@@ -401,7 +406,7 @@
     NSDate *time = [dateFormatter dateFromString:stringTime];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSHourCalendarUnit |NSMinuteCalendarUnit |NSSecondCalendarUnit) fromDate: time];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitHour |NSCalendarUnitMinute |NSCalendarUnitSecond) fromDate: time];
     
     NSInteger hours = [components hour];
     NSInteger minutes = [components minute];
