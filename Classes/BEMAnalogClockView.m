@@ -146,7 +146,7 @@
         
         [self timeFormatVerification];
         
-        self.hourHand = [[KSMHand alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.hourHand = [[KSMHand alloc] initWithFrame:self.bounds];
         self.hourHand.degree = [self degreesFromHour:self.hours andMinutes:self.minutes];
         self.hourHand.color = self.hourHandColor;
         self.hourHand.alpha = self.hourHandAlpha;
@@ -155,7 +155,7 @@
         self.hourHand.offsetLength = self.hourHandOffsideLength;
         [self addSubview:self.hourHand];
         
-        self.minuteHand = [[KSMHand alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.minuteHand = [[KSMHand alloc] initWithFrame:self.bounds];
         self.minuteHand.degree = [self degreesFromMinutes:self.minutes];
         self.minuteHand.color = self.minuteHandColor;
         self.minuteHand.alpha = self.minuteHandAlpha;
@@ -164,7 +164,7 @@
         self.minuteHand.offsetLength = self.minuteHandOffsideLength;
         [self addSubview:self.minuteHand];
         
-        self.secondHand = [[KSMHand alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.secondHand = [[KSMHand alloc] initWithFrame:self.bounds];
         self.secondHand.degree = [self degreesFromMinutes:self.seconds];
         self.secondHand.color = self.secondHandColor;
         self.secondHand.alpha = self.secondHandAlpha;
@@ -220,9 +220,9 @@
         } else {
             [self timeFormatVerification];
             
-            [KSMHand rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
+            [self.secondHand setDegree:[self degreesFromMinutes:self.seconds] animated:YES];
             if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
-            [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+                [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
             }
         }
     }
@@ -245,18 +245,13 @@
     
     [self timeFormatVerification];
     
-     if (animated == YES) {
-         skipOneCycle = YES;
-         [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
-         [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
-         [KSMHand rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
-     } else {
-         self.minuteHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.minutes])*(M_PI/180));
-         self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
-         self.secondHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.seconds])*(M_PI/180));
-     }
+    skipOneCycle = animated;
+    [self.minuteHand setDegree:[self degreesFromMinutes:self.minutes] animated:animated];
+    [self.hourHand   setDegree:[self degreesFromHour:self.hours andMinutes:self.minutes] animated:animated];
+    [self.secondHand setDegree:[self degreesFromMinutes:self.seconds] animated:animated];
+
     if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
-     [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
+        [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
     }
 }
 
@@ -274,16 +269,11 @@
     self.minutes = [currentMinute integerValue];
     self.seconds = [currentSecond integerValue];
     
-    if (animated == YES) {
-        skipOneCycle = YES;
-        [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
-        [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
-        [KSMHand rotateHand:self.secondHand rotationDegree:[self degreesFromMinutes:self.seconds]];
-    } else {
-        self.minuteHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.minutes])*(M_PI/180));
-        self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
-        self.secondHand.transform = CGAffineTransformMakeRotation(([self degreesFromMinutes:self.seconds])*(M_PI/180));
-    }
+    skipOneCycle = animated;
+    [self.minuteHand setDegree:[self degreesFromMinutes:self.minutes] animated:animated];
+    [self.hourHand   setDegree:[self degreesFromHour:self.hours andMinutes:self.minutes] animated:YES];
+    [self.secondHand setDegree:[self degreesFromMinutes:self.seconds] animated:YES];
+
     if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
     [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
     }
@@ -349,14 +339,14 @@
     if (self.seconds >= 60) {
         self.seconds = 0;
         self.minutes = self.minutes + 1;
-        [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
-        [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
+        [self.minuteHand setDegree:[self degreesFromMinutes:self.minutes] animated:YES];
+        [self.hourHand   setDegree:[self degreesFromHour:self.hours andMinutes:self.minutes] animated:YES];
     }
     else if (self.seconds < 0) {
         self.seconds = 59;
         self.minutes = self.minutes - 1;
-        [KSMHand rotateHand:self.minuteHand rotationDegree:[self degreesFromMinutes:self.minutes]];
-        [KSMHand rotateHand:self.hourHand rotationDegree:[self degreesFromHour:self.hours andMinutes:self.minutes]];
+        [self.minuteHand setDegree:[self degreesFromMinutes:self.minutes] animated:YES];
+        [self.hourHand   setDegree:[self degreesFromHour:self.hours andMinutes:self.minutes] animated:YES];
     }
     
     if (self.minutes >= 60) {
@@ -387,7 +377,7 @@
     return degrees;
 }
 
--(float)degreesFromMinutes:(NSInteger)minutes {
+- (float)degreesFromMinutes:(NSInteger)minutes {
     float degrees = minutes*6;
     return degrees;
 }
@@ -492,4 +482,5 @@
         }
     }
 }
+
 @end

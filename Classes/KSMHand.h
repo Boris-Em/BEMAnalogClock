@@ -33,22 +33,12 @@
 /// The length on the short side of the hand instance.
 @property (nonatomic) CGFloat offsetLength;
 
-// The degree the hand should be rotated by.
-@property (nonatomic) float degree;
-
 /// Is there a shadow behind the hand
 @property (nonatomic) BOOL shadowEnabled;
 
-#pragma mark Public Methods
-/**
- *  Rotates the specified hand by the specified degree angle.
- *
- *  @param hand   The KSMHand instance that you would like to rotate
- *  @param degree the degree by which you would like to rotate 
- *                <code>hand</code> by. This degree will be the degree
- *                from the Y Axis the view will be rotated by. 
- *
- */
-+ (void)rotateHand:(KSMHand *)hand rotationDegree:(float)degree;
+// The degree the hand should be rotated by.
+@property (nonatomic) float degree;
+
+- (void)setDegree:(float)degree animated:(BOOL)animated;
 
 @end
