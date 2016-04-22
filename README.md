@@ -204,7 +204,7 @@ Five methods make it easy to customize the graduations of the clock. They all co
   1. `graduationColorForIndex:` controls the color of the graduations.
   2. `graduationAlphaForIndex:` controls the alpha of the graduations.
   3. `graduationWidthForIndex:` controls the width of the graduations.
-  4. `graduationLengthForIndex:` controls the Length of the graduations.
+  4. `graduationLengthForIndex:` controls the length of the graduations.
   5. `graduationOffsetForIndex:` controls the distance from the border of the graduations.  
   
 Here is an example on how to use the `graduationLengthForIndex:` method:
