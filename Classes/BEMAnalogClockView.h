@@ -21,6 +21,7 @@
 
 @protocol BEMAnalogClockDelegate;
 
+IB_DESIGNABLE
 /// BEMAnalogClock is an UIView subclass that gives you an easy way to create beautiful, interactive analog clocks for iOS.
 @interface BEMAnalogClockView : UIView <UIGestureRecognizerDelegate>
 
@@ -47,16 +48,16 @@
 @property (nonatomic, assign) NSInteger seconds;
 
 /// If set to YES, the hands will cast a shadow. Default value is YES.
-@property (nonatomic) BOOL enableShadows;
+@property (nonatomic) IBInspectable BOOL enableShadows;
 
 /// If set to YES, the graduation on the clock will be visible. See the methods bellow to costumize the graduations. Default value is YES.
-@property (nonatomic) BOOL enableGraduations;
+@property (nonatomic) IBInspectable BOOL enableGraduations;
 
 /// If set to YES, the digits (1-12) will be displayed on the face of the clock. Default value is NO.
-@property (nonatomic) BOOL enableDigit;
+@property (nonatomic) IBInspectable BOOL enableDigit;
 
 /// If set to YES, a circular hub will be drawn. Default value is NO;
-@property (nonatomic) BOOL enableHub;
+@property (nonatomic) IBInspectable BOOL enableHub;
 
 /// If set to YES, the clock will be updated in real time (the second hand will move every second, the minute hand every minute...). Default value is NO;
 @property (nonatomic) BOOL realTime;
@@ -68,7 +69,7 @@
 @property (nonatomic) BOOL setTimeViaTouch;
 
 /// If set to YES, the clock time will suport military time. Default value is NO.
-@property (nonatomic) BOOL militaryTime;
+@property (nonatomic) IBInspectable BOOL militaryTime;
 
 /// If set to YES, the clock real time feature is activated. Read only.
 @property (readonly, nonatomic) BOOL realTimeIsActivated;
@@ -77,94 +78,94 @@
 //----- CLOCK'S FACE CUSTOMIZATION -----//
 
 /// The background color of the clock's face.
-@property (strong, nonatomic) UIColor *faceBackgroundColor;
+@property (strong, nonatomic) IBInspectable UIColor *faceBackgroundColor;
 
 /// The alpha of the clock's face.
-@property (nonatomic) CGFloat faceBackgroundAlpha;
+@property (nonatomic) IBInspectable CGFloat faceBackgroundAlpha;
 
 /// The color of the clock's border.
-@property (strong, nonatomic) UIColor *borderColor;
+@property (strong, nonatomic) IBInspectable UIColor *borderColor;
 
 /// The alpha of the clock's border.
-@property (nonatomic) CGFloat borderAlpha;
+@property (nonatomic) IBInspectable CGFloat borderAlpha;
 
 /// The width of the clock's border.
-@property (nonatomic) CGFloat borderWidth;
+@property (nonatomic) IBInspectable CGFloat borderWidth;
 
 /// The font of the digits appearing inside the clock
-@property (strong, nonatomic) UIFont *digitFont;
+@property (strong, nonatomic) IBInspectable UIFont *digitFont;
 
 /// The color of the digits appearing inside the clock
-@property (strong, nonatomic) UIColor *digitColor;
+@property (strong, nonatomic) IBInspectable UIColor *digitColor;
 
 /// The offset for the position of the digits on the clock's face. A value >0 will make the digits appear further away from the center of the clock. A valut <0 will make them closer to the center of the clock. Default value is 0.0.
-@property (nonatomic) CGFloat digitOffset;
+@property (nonatomic) IBInspectable CGFloat digitOffset;
 
 
 //----- HOURS HAND CUSTOMIZATION -----//
 
 /// The color of the clock's hour hand. Default value is whiteColor.
-@property (strong, nonatomic) UIColor *hourHandColor;
+@property (strong, nonatomic) IBInspectable UIColor *hourHandColor;
 
 /// The alpha of the clock's hour hand. Default value is 1.0.
-@property (nonatomic) CGFloat hourHandAlpha;
+@property (nonatomic) IBInspectable CGFloat hourHandAlpha;
 
 /// The width of the clock's hour hand. Default value is 4.0.
-@property (nonatomic) CGFloat hourHandWidth;
+@property (nonatomic) IBInspectable CGFloat hourHandWidth;
 
 /// The length of the clock's hour hand. Default value is 30.
-@property (nonatomic) CGFloat hourHandLength;
+@property (nonatomic) IBInspectable CGFloat hourHandLength;
 
 /// The length of the offside part of the clock's hour hand. Default value is 10.
-@property (nonatomic) CGFloat hourHandOffsideLength;
+@property (nonatomic) IBInspectable CGFloat hourHandOffsideLength;
 
 
 //----- MINUTES HAND CUSTOMIZATION -----//
 
 /// The color of the clock's minute hand. Default value is whiteColor.
-@property (strong, nonatomic) UIColor *minuteHandColor;
+@property (strong, nonatomic) IBInspectable UIColor *minuteHandColor;
 
 /// The alpha of the clock's minute hand. Default value is 1.0.
-@property (nonatomic) CGFloat minuteHandAlpha;
+@property (nonatomic) IBInspectable CGFloat minuteHandAlpha;
 
 /// The width of the clock's minute hand. Default value is 3.0.
-@property (nonatomic) CGFloat minuteHandWidth;
+@property (nonatomic) IBInspectable CGFloat minuteHandWidth;
 
 /// The length of the clock's minute hand. Default value is 55.
-@property (nonatomic) CGFloat minuteHandLength;
+@property (nonatomic) IBInspectable CGFloat minuteHandLength;
 
 /// The length of the offside part of the clock's minute hand. Default value is 20.
-@property (nonatomic) CGFloat minuteHandOffsideLength;
+@property (nonatomic) IBInspectable CGFloat minuteHandOffsideLength;
 
 
 //----- SECONDS HAND CUSTOMIZATION -----//
 
 /// The color of the clock's second hand. Default value is whiteColor.
-@property (strong, nonatomic) UIColor *secondHandColor;
+@property (strong, nonatomic) IBInspectable UIColor *secondHandColor;
 
 /// The alpha of the clock's second hand. Default value is 1.0.
-@property (nonatomic) CGFloat secondHandAlpha;
+@property (nonatomic) IBInspectable CGFloat secondHandAlpha;
 
 /// The width of the clock's second hand. Default value is 1.0.
-@property (nonatomic) CGFloat secondHandWidth;
+@property (nonatomic) IBInspectable CGFloat secondHandWidth;
 
 /// The length of the clock's second hand. Default value is 60.
-@property (nonatomic) CGFloat secondHandLength;
+@property (nonatomic) IBInspectable CGFloat secondHandLength;
 
 /// The length of the offside part of the clock's second hand. Default value is 20.
-@property (nonatomic) CGFloat secondHandOffsideLength;
+@property (nonatomic) IBInspectable CGFloat secondHandOffsideLength;
 
 
 //----- HUB CUSTOMIZATION -----//
 
 /// The color of the hub. Default value is whiteColor.
-@property (strong, nonatomic) UIColor *hubColor;
+@property (strong, nonatomic) IBInspectable UIColor *hubColor;
 
 /// The alpha of the clock's hub. Default value is 1.0.
-@property (nonatomic) CGFloat hubAlpha;
+@property (nonatomic) IBInspectable CGFloat hubAlpha;
 
 /// The width of the clock's hub. Default value is 3.0.
-@property (nonatomic) CGFloat hubRadius;
+@property (nonatomic) IBInspectable CGFloat hubRadius;
 
 //------------------------------------------------------------------------------------//
 //----- METHODS ----------------------------------------------------------------------//
