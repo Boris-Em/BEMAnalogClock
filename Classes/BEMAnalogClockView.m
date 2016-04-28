@@ -189,6 +189,7 @@
                                             repeats:YES];
         }
         
+#if !(TARGET_OS_TV)
         if (self.setTimeViaTouch == YES) {
             UIView *panView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
             panView.backgroundColor = [UIColor clearColor];
@@ -199,6 +200,7 @@
             [panGesture setMaximumNumberOfTouches:1];
             [panView addGestureRecognizer:panGesture];
         }
+#endif
         
         if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
         [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];
