@@ -88,7 +88,10 @@
     _enableHub = NO;
     _realTime = NO;
     _currentTime = NO;
+    
+#if !(TARGET_OS_TV)
     _setTimeViaTouch = NO;
+#endif
     
     _faceBackgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:255/255 alpha:1];
     _faceBackgroundAlpha = 0.95;
@@ -393,7 +396,7 @@
     NSDate *time = [dateFormatter dateFromString:stringTime];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSHourCalendarUnit |NSMinuteCalendarUnit |NSSecondCalendarUnit) fromDate: time];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitHour |NSCalendarUnitMinute |NSCalendarUnitSecond) fromDate: time];
     
     NSInteger hours = [components hour];
     NSInteger minutes = [components minute];

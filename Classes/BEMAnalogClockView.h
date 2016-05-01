@@ -65,8 +65,10 @@ IB_DESIGNABLE
 /// If set to YES, the clock will be set to the current time on the phone. Prioritized over setting the time manualy. Default value is NO.
 @property (nonatomic) BOOL currentTime;
 
+#if !(TARGET_OS_TV)
 /// If set to YES, the clock time can be updated via touch inputs. Default value is NO.
 @property (nonatomic) BOOL setTimeViaTouch;
+#endif
 
 /// If set to YES, the clock time will suport military time. Default value is NO.
 @property (nonatomic) IBInspectable BOOL militaryTime;
