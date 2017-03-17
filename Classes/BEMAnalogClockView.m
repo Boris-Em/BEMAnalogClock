@@ -129,6 +129,7 @@
     skipOneCycle = NO;
     _realTimeIsActivated = NO;
     _militaryTime = NO;
+    _touchHourHand = NO;
 }
 
 - (void)layoutSubviews {
@@ -305,12 +306,23 @@
     self.oldMinutes = self.minutes;
     self.minutes = ((atan2f((translation.x - self.frame.size.height/2), (translation.y - self.frame.size.width/2)) * -(180/M_PI) + 180))/6;
     
-    if (self.oldMinutes > 45 && self.minutes < 15) { // If the user drags the minute hand from 59 to 00, updates the hour on the clock.
-        self.hours++;
+    if (self.touchHourHand == NO) {
+        if (self.oldMinutes > 45 && self.minutes < 15) { // If the user drags the minute hand from 59 to 00, updates the hour on the clock.
+            self.hours++;
+        }
+        else if (self.oldMinutes < 15 && self.minutes > 45) { // If the user drags the minute hand from 00 to 59, updates the hour on the clock.
+            self.hours--;
+        }
     }
-    else if (self.oldMinutes < 15 && self.minutes > 45) { // If the user drags the minute hand from 00 to 59, updates the hour on the clock.
-        self.hours--;
+    else {
+        if ((self.oldMinutes < self.minutes || (self.oldMinutes == 59 && self.minutes == 0)) && self.minutes % 5 == 0) {
+            self.hours++;
+        }
+        else if ((self.oldMinutes > self.minutes || (self.oldMinutes == 0 && self.minutes == 59)) && self.oldMinutes % 5 == 0) {
+            self.hours--;
+        }
     }
+    
     if (self.militaryTime == NO) {
         if (self.hours >= 13) {
             self.hours = 1;
@@ -320,12 +332,18 @@
     } else {
         if (self.hours >= 24) {
             self.hours = 00;
-        } else if (self.hours <= 0) {
+        } else if (self.hours < 0) {
             self.hours = 23;
         }
     }
     self.minuteHand.transform = CGAffineTransformMakeRotation(angleInRadians + M_PI/2);
-    self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
+    
+    if (self.touchHourHand == NO) {
+        self.hourHand.transform = CGAffineTransformMakeRotation(([self degreesFromHour:self.hours andMinutes:self.minutes])*(M_PI/180));
+    }
+    else {
+        self.hourHand.transform = CGAffineTransformMakeRotation(angleInRadians + M_PI/2);
+    }
     
     if ([self.delegate respondsToSelector:@selector(currentTimeOnClock:Hours:Minutes:Seconds:)]) {
         [self.delegate currentTimeOnClock:self Hours:[NSString stringWithFormat:@"%li", (long)self.hours] Minutes:[NSString stringWithFormat:@"%li", (long)self.minutes] Seconds:[NSString stringWithFormat:@"%li", (long)self.seconds]];

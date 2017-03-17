@@ -71,6 +71,9 @@ IB_DESIGNABLE
 /// If set to YES, the clock time will suport military time. Default value is NO.
 @property (nonatomic) IBInspectable BOOL militaryTime;
 
+/// If set to YES, the hand updated by touch will be the hour hand. Default value is NO (minute hand).
+@property (nonatomic) IBInspectable BOOL touchHourHand;
+
 /// If set to YES, the clock real time feature is activated. Read only.
 @property (readonly, nonatomic) BOOL realTimeIsActivated;
 
