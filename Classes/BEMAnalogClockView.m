@@ -341,6 +341,16 @@
             self.hours = 23;
         }
     }
+    
+    if (self.touchHourHand == YES) {
+        if (self.hours >= 12 && self.hours <= 24) {
+            self.hours =  ((((atan2f((translation.x - self.frame.size.height/2), (translation.y - self.frame.size.width/2)) * -(180/M_PI) + 180))/6)/5) + 12;
+        }
+        else {
+            self.hours =  (((atan2f((translation.x - self.frame.size.height/2), (translation.y - self.frame.size.width/2)) * -(180/M_PI) + 180))/6)/5;
+        }
+    }
+    
     self.minuteHand.transform = CGAffineTransformMakeRotation(angleInRadians + M_PI/2);
     
     if (self.touchHourHand == NO) {
